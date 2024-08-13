@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script type="module" src="carousel.js" defer></script>
+
+    <title>Imobiliária</title>
+  </head>
+  <body><nav class="head">
+    <img src="img/logo-removebg-preview.png" class="logo" alt="logo-imovel">
+    <div class="option julius-sans-one-regular">
+      <li><a href="#teste">HOME</a></li>
+      <li><a href="#teste">IMÓVEIS</a></li>
+      <li><a href="#teste">SOBRE</a></li>
+      <li><a href="#teste">CONTATO</a></li>
+    </div>
+    </nav>
+
+    <div class="line-container">
+      <span class="line-text">SONHOS REALIZADOS<br>AQUI</span>
+      <hr class="animated-line">
+    </div>
+  
+    
+    <div>
+      <label for="bedrooms-filter">Filtrar por número de quartos:</label>
+      <select id="bedrooms-filter">
+        <option value="all">Todos</option>
+        <option value="2">2 Quartos</option>
+        <option value="4">4 Quartos</option>
+      </select>
+      <button id="filter-button">Filtrar</button>
+    </div>
+
+
+    <div id="carousel-container">
+
+    </div>
+
+
+    <div>
+      <button class="carousel-button next">&#10095;</button>
+    </div>
+
+  <script type="module" src="main.js"></script>
+
+
+</body>
+</html>

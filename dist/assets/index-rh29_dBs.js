@@ -1,6 +1,6 @@
 (function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))a(r);new MutationObserver(r=>{for(const t of r)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&a(i)}).observe(document,{childList:!0,subtree:!0});function o(r){const t={};return r.integrity&&(t.integrity=r.integrity),r.referrerPolicy&&(t.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?t.credentials="include":r.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function a(r){if(r.ep)return;r.ep=!0;const t=o(r);fetch(r.href,t)}})();function n(e){return`
       <div class="carousel-card">
-        <img src="/assets/img/casa2.jpg" alt="Imagem do Imóvel" class="carousel-card-img">
+        <img src="./assets/img/casa2.jpg" alt="Imagem do Imóvel" class="carousel-card-img">
         <div class="card-info">
           <h3>${e.name}</h3>
           <p>Preço: ${c(e.price)}</p>

@@ -46,6 +46,7 @@ img.logo {
   background-color: rgb( 76, 175, 80);
   align-items: center;
   justify-content: center;
+  padding-bottom: 50px;
 }
 
 .option {
@@ -72,6 +73,7 @@ img.logo {
   align-items: center; 
   margin: 5px 0; 
   width: 100%;
+  padding-top: 50px;
 }
 
 .line-text {
@@ -182,6 +184,29 @@ img.logo {
   font-weight: 540;
   font-style: normal;
 }
+.text {
+  text-align: center;
+  color: black;
+  font-size: 27px;
+  padding: 10px; 
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 540;
+  font-style: normal;
+
+
+}
+
+.text2 {
+  text-align: center;
+  color: black;
+  font-size: 27px;
+  padding: 10px; 
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 540;
+  font-style: normal;
+}
 
 body {
   margin: 0;
@@ -192,7 +217,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; 
-  padding: 10px; }
+  padding: 0px; }
 
 
 .footer .logo {
@@ -207,6 +232,7 @@ body {
 }
 
 .footer .map {
+  padding-left: 90px;
   max-width: 300px; 
   height: 250px; 
   overflow: hidden;
@@ -218,6 +244,61 @@ body {
   border: 0;
 }
 
+.slogan{
+  padding-right: 90px;
+  font-family: "Radio Canada Big", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+
+}
 .line-container1 {
-  padding: 50px 0px 70px 0px;
+  padding: 50px 0px 20px 0px;
+}
+
+
+
+
+.counter-container {
+  background-color: rgb(76, 175, 80);
+  display: flex;
+  font-family: 'Arial', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff0000;
+  justify-content: center;
+}
+
+.digit {
+  background-color: #000; /* Certificando que o fundo está aqui */
+  color: #fff;
+  width: 50px;
+  height: 80px;
+  margin: 5px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.digit span {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  transition: top 0.3s ease-in-out;
+}
+
+.digit span.up {
+  top: -100%;
+}
+
+.digit span.down {
+  top: 100%;
+}
+
+.digit span.active {
+  top: 0;
 }

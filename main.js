@@ -51,6 +51,7 @@ function renderProperties(properties) {
   return properties.map(PropertyCard).join('');
 }
 
+
 //função para filtrar os cards por número de quartos
 function filterPropertiesByBedrooms(bedrooms) {
   const allCards = document.querySelectorAll('.carousel-card');

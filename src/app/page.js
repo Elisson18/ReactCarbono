@@ -1,101 +1,151 @@
-import Image from "next/image";
+"use client"; 
+
+import './style.css';
+import { renderProperties, filterPropertiesByBedrooms } from './components/propertyUtils'; 
+import { useState, useEffect } from 'react'; 
+
+const properties = [
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 1',
+    price: 600000,
+    bedrooms: 4,
+    address: 'Rua A, 456',
+  },
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 2',
+    price: 350000,
+    bedrooms: 2,
+    address: 'Rua B, 789',
+  },
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 3',
+    price: 600000,
+    bedrooms: 4,
+    address: 'Rua C, 456',
+  },
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 4',
+    price: 350000,
+    bedrooms: 2,
+    address: 'Rua D, 789',
+  },
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 5',
+    price: 600000,
+    bedrooms: 4,
+    address: 'Rua E, 456',
+  },
+  {
+    image: '/img/casa2.jpg',
+    name: 'Imóvel 6',
+    price: 350000,
+    bedrooms: 2,
+    address: 'Rua F, 789',
+  },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [bedroomFilter, setBedroomFilter] = useState('all');
+  const [filteredProperties, setFilteredProperties] = useState(properties); 
+  const [counter, setCounter] = useState(0);
+  const increment = 20; 
+  const digitCount = 9; 
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  function updateCounter() {
+    setCounter(prevCounter => prevCounter + increment);
+  }
+
+  useEffect(() => {
+    const interval = setInterval(updateCounter, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  //Atualiza as propriedades filtradas sempre que o filtro mudar
+  useEffect(() => {
+    const result = filterPropertiesByBedrooms(properties, bedroomFilter);
+    setFilteredProperties(result);
+  }, [bedroomFilter]);
+
+  return (
+    <>
+      <nav className="head">
+        <img src="/img/logo-removebg-preview.png" className="logo" alt="logo-imovel" />
+        <div className="option julius-sans-one-regular">
+          <li><a href="#teste">HOME</a></li>
+          <li><a href="#teste">IMÓVEIS</a></li>
+          <li><a href="#teste">SOBRE</a></li>
+          <li><a href="#teste">CONTATO</a></li>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      <h1 className="text">SÓ HOJE NOS JÁ CAPTURAMOS</h1>
+
+      <div className="counter-container">
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[0]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[1]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[2]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[3]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[4]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[5]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[6]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[7]}</span></div>
+        <div className="digit"><span>{String(counter).padStart(digitCount, '0')[8]}</span></div>
+      </div>
+
+      <h1 className="text2">DE CARBONO EM GRAMAS</h1>
+
+      <div className="line-container">
+        <span className="line-text">SONHOS REALIZADOS<br />AQUI</span>
+        <hr className="animated-line" />
+      </div>
+
+      <div className="banner">
+        <img src="/img/Construction-pana.png" className="background-image" alt="Construção" />
+        <h1 className="overlay-text">
+          Descubra a diferença com a Imobiliária Carbono Zero! Em um mundo que busca cada vez mais práticas sustentáveis, nos destacamos por nosso compromisso com o meio ambiente. Ao escolher nossos serviços, você não apenas encontra a casa dos seus sonhos, mas também contribui para um futuro mais verde. A cada venda, convertendo parte do valor arrecadado em árvores plantadas, ajudamos a combater as mudanças climáticas e a preservar nosso planeta para as futuras gerações. Faça parte dessa transformação: compre, venda e plante com a Imobiliária Carbono Zero, onde seu investimento também planta o futuro.
+        </h1>
+      </div>
+
+      <div className="line-container">
+        <hr className="animated-line" />
+      </div>
+
+      <div className="filter">
+        <label htmlFor="bedrooms-filter">Filtrar por número de quartos:</label>
+        <select id="bedrooms-filter" onChange={(e) => setBedroomFilter(e.target.value)}>
+          <option value="all">Todos</option>
+          <option value="2">2 Quartos</option>
+          <option value="4">4 Quartos</option>
+        </select>
+      </div>
+
+      <div id="carousel-container">
+        {renderProperties(filteredProperties)} {/*renderiza os cards de propriedades filtradas */}
+      </div>
+
+      <div className="line-container1">
+        <hr className="animated-line" />
+      </div>
+
+      <footer className="footer">
+        <div>
+          <h1 className="slogan">Imobiliária Carbono Zero:<br />Conectando você ao futuro sustentável.</h1>
+        </div>
+        <div className="logo">
+          <img src="/img/logo-removebg-preview.png" alt="Logo" />
+        </div>
+        <div className="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63333.855252723!2d-34.902712785006116!3d-7.1990211914871844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ace810852ae4f1%3A0xaf5445223401f2bb!2sIFPB%20-%20Campus%20Jo%C3%A3o%20Pessoa!5e0!3m2!1spt-BR!2sbr!4v1699450182623!5m2!1spt-BR!2sbr"
+            className="mapa" width="320" height="320" style={{ border: "5px" }} allowFullScreen="" loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
